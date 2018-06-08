@@ -13,5 +13,24 @@ $(document).ready(function() {
 
   });
 
+  $("#en_lang").click(function() {
+    $("html").attr("lang", "en");
+    $("html").attr("dir", "ltr");
+  });
+
+  $("#pt_lang").click(function() {
+    $("html").attr("lang", "pt");
+    $("html").attr("dir", "ltr");
+
+    $.ajax({url: "i18n/pt.json", success: function(text) {
+
+    }});
+  });
+
+  $("#ar_lang").click(function() {
+    $("html").attr("lang", "ar");
+    $("html").attr("dir", "rtl");
+  });
+
   $("#convert").trigger("click");
 });
