@@ -1,0 +1,10 @@
+footer {
+  width: 100%;
+  height: 40px;
+  bottom: 0;
+  position: fixed;
+}
+
+div.row {
+  margin-top: 50px;
+}
