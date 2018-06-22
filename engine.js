@@ -86,33 +86,43 @@ $(document).ready(function() {
     var amount = $("#amount").val();
 
     $.ajax({url: "https://min-api.cryptocompare.com/data/price?fsym=" + crypto + "&tsyms=" + fiat, success: function(result) {
-      $("#result").text(amount + " " + crypto + " = " + (result[fiat] * amount).toFixed(2) + " " + fiat);
+      if (i18next.language == "ar") {
+        $("#result").text(fiat + " " + (result[fiat] * amount).toFixed(2) + " = " + crypto + " " + amount);
+      } else {
+        $("#result").text(amount + " " + crypto + " = " + (result[fiat] * amount).toFixed(2) + " " + fiat);
+      }
     }});
 
   });
 
   $("#en_lang").click(function() {
     $("html").attr("lang", "en");
-    $("html").attr("dir", "ltr");
 
     i18next.changeLanguage('en');
     updateContent();
+
+    $("html").attr("dir", i18next.dir());
+    $("#convert").trigger("click");
   });
 
   $("#pt_lang").click(function() {
     $("html").attr("lang", "pt");
-    $("html").attr("dir", "ltr");
 
     i18next.changeLanguage('pt');
     updateContent();
+
+    $("html").attr("dir", i18next.dir());
+    $("#convert").trigger("click");
   });
 
   $("#ar_lang").click(function() {
     $("html").attr("lang", "ar");
-    $("html").attr("dir", "rtl");
 
     i18next.changeLanguage('ar');
     updateContent();
+
+    $("html").attr("dir", i18next.dir());
+    $("#convert").trigger("click");
   });
 
   $("#convert").trigger("click");
